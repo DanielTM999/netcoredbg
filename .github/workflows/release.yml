@@ -9,7 +9,7 @@ on:
       tag:
         description: "Release tag to publish"
         required: true
-        default: "3.1.3-1062-orion-hotreload.2"
+        default: "3.1.3-1062-orion-hotreload.3"
 
 permissions:
   contents: write
@@ -79,6 +79,7 @@ jobs:
           cmake -S . -B build \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX="$PWD/package" \
+            -DNCDB_DOTNET_STARTUP_HOOK=ncdbhook.dll \
             ${{ matrix.cmake_args }}
 
       - name: Build

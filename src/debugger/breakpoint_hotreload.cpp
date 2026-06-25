@@ -11,6 +11,14 @@
 namespace netcoredbg
 {
 
+#ifdef NCDB_DOTNET_STARTUP_HOOK
+static std::string HotReloadBaseName(const std::string &path)
+{
+    std::size_t i = path.find_last_of("/\\");
+    return i == std::string::npos ? path : path.substr(i + 1);
+}
+#endif // NCDB_DOTNET_STARTUP_HOOK
+
 HRESULT HotReloadBreakpoint::SetHotReloadBreakpoint(const std::string &updatedDLL, const std::unordered_set<mdTypeDef> &updatedTypeTokens)
 {
 #ifdef NCDB_DOTNET_STARTUP_HOOK
@@ -56,11 +64,11 @@ HRESULT HotReloadBreakpoint::ManagedCallbackLoadModuleAll(ICorDebugModule *pModu
 {
 #ifdef NCDB_DOTNET_STARTUP_HOOK
 
-    static std::string dllName(NCDB_DOTNET_STARTUP_HOOK);
+    static std::string dllName(HotReloadBaseName(NCDB_DOTNET_STARTUP_HOOK));
 
     std::lock_guard<std::mutex> lock(m_reloadMutex);
 
-    if (dllName != GetModuleFileName(pModule))
+    if (dllName != HotReloadBaseName(GetModuleFileName(pModule)))
         return S_OK;
 
     HRESULT Status;

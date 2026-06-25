@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\breakpoint_break.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\breakpoint_entry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\breakpoint_hotreload.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\breakpoints_exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\breakpoints_func.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\breakpoints_line.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\breakpoints.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\breakpointutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\callbacksqueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\evalhelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\evalstackmachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\evaluator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\evalwaiter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\evalutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\frames.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\hotreloadhelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\managedcallback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\manageddebugger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\threads.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\stepper_async.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\stepper_simple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\steppers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\valueprint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\variables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\debugger\waitpid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\interfaces\types.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\managed\interop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\metadata\attributes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\metadata\async_info.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\metadata\jmc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\metadata\modules.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\metadata\modules_app_update.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\metadata\modules_sources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\metadata\typeprinter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\protocols\cliprotocol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\protocols\escaped_string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\protocols\protocol_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\protocols\miprotocol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\protocols\tokenizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\protocols\vscodeprotocol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\protocols\sourcestorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\utf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\build-hotreload\src\errormessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\buildinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\dynlibs_unix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\dynlibs_win32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\err_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\filesystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\filesystem_unix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\filesystem_win32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\ioredirect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\iosystem_unix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\iosystem_win32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\interop_unix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\interop_win32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\platform_unix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\platform_win32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\streams.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\utils\logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\build-hotreload\CMakeFiles\7b35a1297287ea3f6250209e6a7a5269\generrmsg.csproj.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\build-hotreload\CMakeFiles\c24950ff1c5b17da881fcb2418ed0be2\generrmsg.dll.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\build-hotreload\CMakeFiles\0d8aab3decb208267659c77531cfb447\errormessage.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\danie\Documents\development\Csharp\netcoredbg\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9413A182-50E5-3753-A485-947528CAA3F9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{85D2B98A-1546-331D-9FE3-9E235E3387D7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

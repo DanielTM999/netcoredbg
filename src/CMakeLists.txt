@@ -59,7 +59,7 @@ if (NOT WIN32)
     include_directories(${CORECLR_SRC_DIR}/pal/prebuilt/inc)
     include_directories(${CMAKE_CURRENT_SOURCE_DIR}/coreclr)
 else()
-    include_directories(${CORECLR_SRC_DIR}/inc ${CORECLR_SRC_DIR}/debug/inc)
+    include_directories(${CORECLR_SRC_DIR}/inc ${CORECLR_SRC_DIR}/debug/inc ${CORECLR_SRC_DIR}/pal/prebuilt/inc)
 endif()
 include_directories(${CORECLR_SRC_DIR})
 include_directories(${CORECLR_SRC_DIR}/debug/shim)
@@ -417,7 +417,7 @@ if (BUILD_MANAGED AND NCDB_DOTNET_STARTUP_HOOK)
 
     # Build Debug only, code must be not optimized.
     add_custom_command(OUTPUT ${NCDBHOOK_DOTNET_BUILD_RESULT}
-      COMMAND NCDB_HOOK_TargetFramework=${NCDB_HOOK_TargetFramework} ${DOTNETCLI} publish ${NCDBHOOK_PROJECT} -c Debug -o ${CMAKE_CURRENT_BINARY_DIR} /p:BaseIntermediateOutputPath=${CMAKE_CURRENT_BINARY_DIR}/obj/ /p:BaseOutputPath=${CMAKE_CURRENT_BINARY_DIR}/bin/
+      COMMAND ${DOTNETCLI} publish ${NCDBHOOK_PROJECT} -c Debug -o ${CMAKE_CURRENT_BINARY_DIR} /p:NCDB_HOOK_TargetFramework=${NCDB_HOOK_TargetFramework} /p:BaseIntermediateOutputPath=${CMAKE_CURRENT_BINARY_DIR}/obj/ /p:BaseOutputPath=${CMAKE_CURRENT_BINARY_DIR}/bin/
       WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
       DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/ncdbhook/*.cs" "${NCDBHOOK_PROJECT}"
       COMMENT "Compiling ${NCDBHOOK_DLL_NAME}"

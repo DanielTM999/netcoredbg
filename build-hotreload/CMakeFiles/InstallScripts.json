@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/cmake_install.cmake",
+		"C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/third_party/linenoise-ng/cmake_install.cmake",
+		"C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
