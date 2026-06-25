@@ -14,6 +14,7 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <cstdlib>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -1692,11 +1693,22 @@ HRESULT ManagedDebugger::HotReloadApplyDeltas(const std::string &dllFileName, co
     std::unordered_set<mdTypeDef> updatedTypeTokens;
     IfFailRet(ApplyPdbDeltaAndLineUpdates(dllFileName, deltaPDB, lineUpdates, updatedDLL, updatedTypeTokens));
 
-    ToRelease<ICorDebugThread> pThread;
-    if (SUCCEEDED(FindEvalCapableThread(pThread)))
-        IfFailRet(HotReloadHelpers::UpdateApplication(pThread, m_sharedModules.get(), m_sharedEvaluator.get(), m_sharedEvalHelpers.get(), updatedDLL, updatedTypeTokens));
-    else
-        IfFailRet(m_sharedBreakpoints->SetHotReloadBreakpoint(updatedDLL, updatedTypeTokens));
+    // The metadata/IL/PDB deltas above already updated the running code (ICorDebugModule2::ApplyChanges).
+    // Invoking the managed MetadataUpdateHandlers (ClearCache/UpdateApplication) requires func-eval, which
+    // is unreliable when attached to a live process: framework threads sit at GC-unsafe points
+    // (CORDBG_E_ILLEGAL_AT_GC_UNSAFE_POINT 0x80131c23), the eval times out and netcoredbg releases all
+    // threads to avoid an unsafe abort, corrupting process state and crashing the debuggee. Skipping the
+    // handler invocation keeps the code change live without that instability. Opt back in with
+    // NCDB_HOTRELOAD_UPDATE_HANDLERS=1 if a scenario truly needs cache refresh.
+    const char *runHandlers = std::getenv("NCDB_HOTRELOAD_UPDATE_HANDLERS");
+    if (runHandlers != nullptr && runHandlers[0] == '1')
+    {
+        ToRelease<ICorDebugThread> pThread;
+        if (SUCCEEDED(FindEvalCapableThread(pThread)))
+            IfFailRet(HotReloadHelpers::UpdateApplication(pThread, m_sharedModules.get(), m_sharedEvaluator.get(), m_sharedEvalHelpers.get(), updatedDLL, updatedTypeTokens));
+        else
+            IfFailRet(m_sharedBreakpoints->SetHotReloadBreakpoint(updatedDLL, updatedTypeTokens));
+    }
 
     if (continueProcess)
         IfFailRet(m_sharedCallbacksQueue->Continue(m_iCorProcess));
