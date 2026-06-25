@@ -421,6 +421,7 @@ static void AddCapabilitiesTo(json &capabilities)
     capabilities["supportsSetExpression"] = true;
     capabilities["supportsTerminateRequest"] = true;
     capabilities["supportsCancelRequest"] = true;
+    capabilities["supportsNetcoredbgHotReload"] = true;
 
     capabilities["supportsExceptionInfoRequest"] = true;
     capabilities["supportsExceptionFilterOptions"] = true;
@@ -599,6 +600,11 @@ static HRESULT HandleCommand(std::shared_ptr<IDebugger> &sharedDebugger, std::st
 
         sharedDebugger->SetJustMyCode(arguments.value("justMyCode", true)); // MS vsdbg have "justMyCode" enabled by default.
         sharedDebugger->SetStepFiltering(arguments.value("enableStepFiltering", true)); // MS vsdbg have "enableStepFiltering" enabled by default.
+        if (arguments.value("hotReload", false))
+        {
+            HRESULT Status;
+            IfFailRet(sharedDebugger->SetHotReload(true));
+        }
 
         if (!fileExec.empty())
             return sharedDebugger->Launch(fileExec, execArgs, env, cwd, arguments.value("stopAtEntry", false));
@@ -809,7 +815,44 @@ static HRESULT HandleCommand(std::shared_ptr<IDebugger> &sharedDebugger, std::st
         else
             return E_INVALIDARG;
 
+        if (arguments.value("hotReload", false))
+        {
+            HRESULT Status;
+            IfFailRet(sharedDebugger->SetHotReload(true));
+        }
+
         return sharedDebugger->Attach(processId);
+    } },
+    { "netcoredbg/applyHotReload", [&](const json &arguments, json &body){
+        HRESULT Status;
+
+        std::string dllFileName = arguments.value("dllFileName", std::string());
+        if (dllFileName.empty())
+            dllFileName = arguments.value("assembly", std::string());
+        if (dllFileName.empty())
+            return E_INVALIDARG;
+
+        std::string deltaMD = arguments.value("deltaMD", std::string());
+        if (deltaMD.empty())
+            deltaMD = arguments.value("metadataDelta", std::string());
+
+        std::string deltaIL = arguments.value("deltaIL", std::string());
+        if (deltaIL.empty())
+            deltaIL = arguments.value("ilDelta", std::string());
+
+        std::string deltaPDB = arguments.value("deltaPDB", std::string());
+        if (deltaPDB.empty())
+            deltaPDB = arguments.value("pdbDelta", std::string());
+
+        std::string lineUpdates = arguments.value("lineUpdates", std::string());
+
+        if (deltaMD.empty() || deltaIL.empty() || deltaPDB.empty() || lineUpdates.empty())
+            return E_INVALIDARG;
+
+        IfFailRet(sharedDebugger->HotReloadApplyDeltas(dllFileName, deltaMD, deltaIL, deltaPDB, lineUpdates));
+
+        body["applied"] = true;
+        return S_OK;
     } },
     { "setVariable", [&](const json &arguments, json &body) {
         HRESULT Status;

@@ -1,0 +1,118 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to publish"
+        required: true
+        default: "3.1.3-1062-orion-hotreload.1"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.asset }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            asset: netcoredbg-win64.zip
+            archive: zip
+            cmake_args: -A x64 -DCLR_CMAKE_HOST_ARCH=x64
+          - os: ubuntu-22.04
+            asset: netcoredbg-linux-amd64.tar.gz
+            archive: tar
+            cmake_args: -DCLR_CMAKE_HOST_ARCH=x64
+          - os: ubuntu-22.04-arm
+            asset: netcoredbg-linux-arm64.tar.gz
+            archive: tar
+            cmake_args: -DCLR_CMAKE_HOST_ARCH=arm64
+          - os: macos-15-intel
+            asset: netcoredbg-osx-amd64.tar.gz
+            archive: tar
+            cmake_args: -DCLR_CMAKE_HOST_ARCH=x64
+          - os: macos-15
+            asset: netcoredbg-osx-arm64.tar.gz
+            archive: tar
+            cmake_args: -DCLR_CMAKE_HOST_ARCH=arm64
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake libunwind-dev gettext
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Configure
+        shell: bash
+        run: |
+          cmake -S . -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX="$PWD/package" \
+            ${{ matrix.cmake_args }}
+
+      - name: Build
+        run: cmake --build build --config Release --target install --parallel
+
+      - name: Package tar.gz
+        if: matrix.archive == 'tar'
+        shell: bash
+        run: |
+          tar -C package -czf "${{ matrix.asset }}" .
+
+      - name: Package zip
+        if: matrix.archive == 'zip'
+        shell: pwsh
+        run: |
+          Compress-Archive -Path package\* -DestinationPath "${{ matrix.asset }}" -Force
+
+      - name: Upload package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.asset }}
+          path: ${{ matrix.asset }}
+          if-no-files-found: error
+
+  release:
+    name: Publish release
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Resolve release tag
+        id: release
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download packages
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.release.outputs.tag }}
+          name: netcoredbg ${{ steps.release.outputs.tag }}
+          files: dist/*
+          fail_on_unmatched_files: true
