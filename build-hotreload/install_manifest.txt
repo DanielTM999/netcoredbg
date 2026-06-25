@@ -1,8 +1,0 @@
-C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/package/netcoredbg.exe
-C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/package/ManagedPart.dll
-C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/package/Microsoft.CodeAnalysis.dll
-C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/package/Microsoft.CodeAnalysis.CSharp.dll
-C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/package/Microsoft.CodeAnalysis.Scripting.dll
-C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/package/Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/package/dbgshim.dll
-C:/Users/danie/Documents/development/Csharp/netcoredbg/build-hotreload/package/ncdbhook.dll

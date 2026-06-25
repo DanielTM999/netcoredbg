@@ -50,3 +50,7 @@ tags
 
 # netcoregdb's command history
 .netcoredbg_hist
+
+# Local out-of-source build dirs
+/build-hotreload/
+/.ncdbhook-out/
